@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, AsyncStorage} from 'react-native';
+import auth from "../hocs/auth";
 
 class HomeScreen extends React.Component {
     render() {
@@ -54,4 +55,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomeScreen;
+export default auth('Auth')(HomeScreen);

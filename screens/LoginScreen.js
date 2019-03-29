@@ -14,6 +14,12 @@ class LoginScreen extends React.Component {
         };
     };
 
+    async bypassLogIn () {
+        await AsyncStorage.setItem('userToken', 'bypass');
+        await AsyncStorage.setItem('loginType', 'bypass');
+        this.props.navigation.navigate('Home');
+    }
+
     async logIn () {
         try {
             const {
@@ -30,6 +36,7 @@ class LoginScreen extends React.Component {
                 const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
                 Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
                 await AsyncStorage.setItem('userToken', token);
+                await AsyncStorage.setItem('loginType', 'facebook');
                 this.props.navigation.navigate('Home');
             } else {
                 // type === 'cancel'
@@ -49,6 +56,13 @@ class LoginScreen extends React.Component {
                             title={'Log In'}
                             color={'#b60789'}
                             accessibilityLabel={'Log In'}
+                    />
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button onPress={() => this.bypassLogIn()}
+                            title={'Easy Log In'}
+                            color={'#b60789'}
+                            accessibilityLabel={'Easy Log In'}
                     />
                 </View>
             </View>

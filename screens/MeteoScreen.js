@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import Title from "../components/Title";
 import Forecast from '../containers/Forecast';
 import {ScrollView, StyleSheet} from "react-native";
+import auth from '../hocs/auth'
 
 class MeteoScreen extends Component {
     state = {
       backgroundColor: '#3E8BB8'
     };
+
 
     setBackgroundColor = weather => {
         if (weather === 1000) {
@@ -34,4 +36,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default MeteoScreen;
+export default auth('Auth')(MeteoScreen);

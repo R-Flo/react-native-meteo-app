@@ -38,6 +38,7 @@ export default class Forecast extends Component {
         let location = await Location.getCurrentPositionAsync({});
         console.log(location);
         let address = await Location.reverseGeocodeAsync(location.coords);
+        console.log( address );
         this.setState({ location, address });
     };
 

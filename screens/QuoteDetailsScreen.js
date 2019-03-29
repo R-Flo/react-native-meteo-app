@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
+import auth from '../hocs/auth'
 
 
 class QuoteDetailsScreen extends Component {
+
+
     render() {
         const quote = this.props.navigation.getParam('quote');
         return (
@@ -17,4 +20,4 @@ class QuoteDetailsScreen extends Component {
     }
 }
 
-export default QuoteDetailsScreen;
+export default auth('Auth')(QuoteDetailsScreen);
