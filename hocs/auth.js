@@ -3,7 +3,7 @@ import {AsyncStorage, Alert} from "react-native";
 import { withNavigationFocus } from 'react-navigation';
 
 
-export default (route) => {
+const auth = (route) => {
     return (Screen) =>{
         return withNavigationFocus(class extends React.Component {
 
@@ -16,7 +16,7 @@ export default (route) => {
                     if(data.error) {
                         this.navigation.navigate(route);
                     }else{
-                        Alert.alert('Logged in!', `Hi ${data.name}!`);
+                        //Alert.alert('Logged in!', `Hi ${data.name}!`);
                     }
                 }
             }
@@ -29,3 +29,5 @@ export default (route) => {
         })
     }
 };
+
+export default auth;
